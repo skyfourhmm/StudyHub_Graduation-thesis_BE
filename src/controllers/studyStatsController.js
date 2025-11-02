@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const StudyStats = require("../schemas/StudyStats,js");
+const StudyStats = require("../schemas/studyStats,js");
 
 // ✅ Ghi lại hoạt động học tập trong ngày
 const logStudyActivity = async (req, res) => {

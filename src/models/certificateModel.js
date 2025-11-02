@@ -1,4 +1,4 @@
-const Certificate = require("../schemas/Certificate");
+const Certificate = require("../schemas/certificate");
 const userModel = require("./userModel");
 const courseModel = require("./courseModel");
 const config = require("../configs/config");

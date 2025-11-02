@@ -1,5 +1,5 @@
-const AttemptDetail = require("../schemas/AttemptDetail");
-const TestAttempt = require("../schemas/TestAttempt");
+const AttemptDetail = require("../schemas/attemptDetail");
+const TestAttempt = require("../schemas/testAttempt");
 
 // Tạo mới bản ghi AttemptDetail
 const createAttemptDetail = async (data) => {

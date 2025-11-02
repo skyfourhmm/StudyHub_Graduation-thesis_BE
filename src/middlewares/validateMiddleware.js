@@ -1,4 +1,4 @@
-const user = require("../schemas/User");
+const user = require("../schemas/user");
 const bcrypt = require("bcrypt");
 
 // Hàm để validate mật khẩu

@@ -1,4 +1,4 @@
-const Test = require("../schemas/Test");
+const Test = require("../schemas/test");
 
 const createTest = async (testData) => {
   try {

@@ -1,4 +1,4 @@
-const GrammarLesson = require("../schemas/GrammarLesson");
+const GrammarLesson = require("../schemas/grammarLesson");
 
 // Chỉ nhận vào dữ liệu và trả về promise
 const createLesson = async (lessonData) => {

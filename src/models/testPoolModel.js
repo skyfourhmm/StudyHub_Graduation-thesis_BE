@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const TestPool = require("../schemas/TestPool");
-const TestAttempt = require("../schemas/TestAttempt");
+const TestPool = require("../schemas/testPool");
+const TestAttempt = require("../schemas/testAttempt");
 
 const createTestPool = async (poolData) => {
   try {

@@ -1,4 +1,4 @@
-const UserAnswer = require("../schemas/UserAnswer");
+const UserAnswer = require("../schemas/userAnswer");
 
 const createUserAnswer = async (answerData) => {
   try {
