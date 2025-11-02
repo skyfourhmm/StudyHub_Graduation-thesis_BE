@@ -1,32 +1,37 @@
 const express = require("express");
 const cors = require("cors");
 const http = require("http");
-const connectToDB = require("./configs/database"); // bỏ src/ đầu tiên
-const redisService = require("./services/redis.service");
+const connectToDB = require("./src/configs/database");
+const redisService = require("./src/services/redis.service");
 
 // Routes
-const authRoutes = require("./routes/authRoutes");
-const courseRoutes = require("./routes/courseRoutes");
-const userRoutes = require("./routes/userRoutes");
-const certificateRoutes = require("./routes/certificateRoutes");
-const reviewRoutes = require("./routes/reviewRoutes");
-const paymentRoutes = require("./routes/paymentRoutes");
+const authRoutes = require("./src/routes/authRoutes");
+const courseRoutes = require("./src/routes/courseRoutes");
+const userRoutes = require("./src/routes/userRoutes");
+const certificateRoutes = require("./src/routes/certificateRoutes");
+const reviewRoutes = require("./src/routes/reviewRoutes");
+const paymentRoutes = require("./src/routes/paymentRoutes");
 
-const testRoutes = require("./routes/testRoutes");
-const questionRoutes = require("./routes/questionRoutes");
-const attemptRoutes = require("./routes/attemptRoutes");
+const testRoutes = require("./src/routes/testRoutes");
+const questionRoutes = require("./src/routes/questionRoutes");
+const attemptRoutes = require("./src/routes/attemptRoutes");
 
-const testResultRoutes = require("./routes/testResultRoutes");
-const generateTestRoutes = require("./routes/generateTestRoutes");
-const testPoolRoutes = require("./routes/testPoolRoutes");
-const attemptDetailRoutes = require("./routes/attemptDetailRoutes");
-const studyRoutes = require("./routes/studyRoutes");
-const studyStatsRoutes = require("./routes/studyStatsRoutes");
-const grammarLessonRoutes = require("./routes/grammarLessonRoutes");
+const testResultRoutes = require("./src/routes/testResultRoutes");
+const generateTestRoutes = require("./src/routes/generateTestRoutes");
+
+const testPoolRoutes = require("./src/routes/testPoolRoutes");
+
+const attemptDetailRoutes = require("./src/routes/attemptDetailRoutes");
+
+const studyRoutes = require("./src/routes/studyRoutes");
+
+const studyStatsRoutes = require("./src/routes/studyStatsRoutes");
+
+const grammarLessonRoutes = require("./src/routes/grammarLessonRoutes");
 
 require("dotenv").config();
 
-// Create Express App and HTTP Server
+// Create Expresss App and HTTP Server
 const app = express();
 const server = http.createServer(app);
 
@@ -54,11 +59,13 @@ app.use("/api/v1/questions", questionRoutes);
 app.use("/api/v1/attempts", attemptRoutes);
 
 app.use("/api/v1/test-result", testResultRoutes);
-app.use("/api/v1/generate-test", generateTestRoutes);
+app.use("/api/v1/generate-test", generateTestRoutes); // tạm thời dùng chung
 app.use("/api/v1/test-pools", testPoolRoutes);
 
 app.use("/api/v1/attempt-details", attemptDetailRoutes);
+
 app.use("/api/v1/study-stats", studyStatsRoutes);
+
 app.use("/api/v1/grammar-lessons", grammarLessonRoutes);
 
 // Connect to MongoDB and start server
@@ -67,17 +74,17 @@ const startServer = async () => {
     await connectToDB(); // Connect to MongoDB
     await redisService.connect(); // Connect to Redis
 
-    // Cleanup expired tokens every hour
+    // Setup cleanup job (chạy mỗi giờ) để xóa token hết hạn
     setInterval(() => {
       redisService.cleanupExpiredTokens();
     }, 60 * 60 * 1000);
 
-    // Root route
+    // Define routes
     app.get("/", (req, res) => {
       res.status(200).json({ message: "Welcome to StudyHub API!" });
     });
 
-    // 404 handler
+    // Handle 404 errors
     app.use((req, res, next) => {
       res.status(404).json({ error: "Route not found" });
     });
@@ -104,7 +111,7 @@ const startServer = async () => {
     });
   } catch (error) {
     console.error("Failed to start server:", error);
-    process.exit(1);
+    process.exit(1); // Escape when there is an error
   }
 };
 
