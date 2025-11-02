@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const User = require("../schemas/user");
+const User = require("../schemas/user.js");
 const config = require("../configs/config");
 const redisService = require("../services/redis.service");
 
