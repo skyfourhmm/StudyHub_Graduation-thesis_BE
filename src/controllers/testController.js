@@ -1,6 +1,6 @@
 const testModel = require("../models/testModel");
-const Question = require("../schemas/question");
-const TestAttempt = require("../schemas/testAttempt");
+const Question = require("../schemas/Question");
+const TestAttempt = require("../schemas/TestAttempt");
 
 const createTest = async (req, res) => {
   try {

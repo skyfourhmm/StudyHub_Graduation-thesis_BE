@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const StudyStats = require("../schemas/studyStats");
+const StudyStats = require("../schemas/StudyStats");
 const StudyLog = require("../schemas/studyLog");
 
 const getStudyStatistics = async (userId) => {

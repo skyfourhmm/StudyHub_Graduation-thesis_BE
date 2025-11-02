@@ -1,4 +1,4 @@
-const TestAttempt = require("../schemas/testAttempt");
+const TestAttempt = require("../schemas/TestAttempt");
 
 const createAttempt = async (attemptData) => {
   try {

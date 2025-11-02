@@ -1,6 +1,6 @@
 const attemptDetailModel = require("../models/attemptDetailModel");
 
-const TestAttempt = require("../schemas/testAttempt");
+const TestAttempt = require("../schemas/TestAttempt");
 const AttemptDetail = require("../schemas/attemptDetail");
 
 const createAttemptDetail = async (req, res) => {

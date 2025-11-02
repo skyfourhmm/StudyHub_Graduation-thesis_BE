@@ -1,4 +1,4 @@
-const Question = require("../schemas/question");
+const Question = require("../schemas/Question");
 
 const createQuestion = async (questionData) => {
   try {

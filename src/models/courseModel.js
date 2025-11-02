@@ -1,5 +1,5 @@
-const Course = require("../schemas/course");
-const Payment = require("../schemas/payment");
+const Course = require("../schemas/Course");
+const Payment = require("../schemas/Payment");
 const mongoose = require("mongoose");
 
 /**

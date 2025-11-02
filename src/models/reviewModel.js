@@ -1,5 +1,5 @@
-const Review = require("../schemas/review");
-const Course = require("../schemas/course");
+const Review = require("../schemas/Review");
+const Course = require("../schemas/Course");
 const mongoose = require("mongoose");
 
 /**
