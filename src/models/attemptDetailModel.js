@@ -1,4 +1,4 @@
-const AttemptDetail = require("../schemas/AttemptDetail");
+const AttemptDetail = require("../schemas/attemptDetail");
 const TestAttempt = require("../schemas/TestAttempt");
 
 // Tạo mới bản ghi AttemptDetail
