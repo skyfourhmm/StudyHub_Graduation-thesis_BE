@@ -1,0 +1,1325 @@
+[
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [],
+    "name": "AccessControlBadConfirmation",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "neededRole",
+        "type": "bytes32"
+      }
+    ],
+    "name": "AccessControlUnauthorizedAccount",
+    "type": "error"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "certHash",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "student",
+        "type": "address"
+      }
+    ],
+    "name": "CertificateIssued",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "previousAdminRole",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "newAdminRole",
+        "type": "bytes32"
+      }
+    ],
+    "name": "RoleAdminChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      }
+    ],
+    "name": "RoleGranted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      }
+    ],
+    "name": "RoleRevoked",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "ADMIN_ROLE",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "DEFAULT_ADMIN_ROLE",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_keyword",
+        "type": "string"
+      }
+    ],
+    "name": "adminSearchByCourse",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "certHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "issuer",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "issuerName",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "student",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "studentName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseType",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseLevel",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "issuedDate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct CertificateRegistry.Certificate[]",
+        "name": "listCertificates",
+        "type": "tuple[]"
+      },
+      {
+        "internalType": "uint256",
+        "name": "total",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_keyword",
+        "type": "string"
+      }
+    ],
+    "name": "adminSearchByCourseLevel",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "certHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "issuer",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "issuerName",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "student",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "studentName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseType",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseLevel",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "issuedDate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct CertificateRegistry.Certificate[]",
+        "name": "listCertificates",
+        "type": "tuple[]"
+      },
+      {
+        "internalType": "uint256",
+        "name": "total",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_keyword",
+        "type": "string"
+      }
+    ],
+    "name": "adminSearchByCourseType",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "certHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "issuer",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "issuerName",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "student",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "studentName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseType",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseLevel",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "issuedDate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct CertificateRegistry.Certificate[]",
+        "name": "listCertificates",
+        "type": "tuple[]"
+      },
+      {
+        "internalType": "uint256",
+        "name": "total",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_fromDate",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_toDate",
+        "type": "uint256"
+      }
+    ],
+    "name": "adminSearchByDate",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "certHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "issuer",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "issuerName",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "student",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "studentName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseType",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseLevel",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "issuedDate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct CertificateRegistry.Certificate[]",
+        "name": "listCertificates",
+        "type": "tuple[]"
+      },
+      {
+        "internalType": "uint256",
+        "name": "total",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_keyword",
+        "type": "string"
+      }
+    ],
+    "name": "adminSearchByStudentName",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "certHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "issuer",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "issuerName",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "student",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "studentName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseType",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseLevel",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "issuedDate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct CertificateRegistry.Certificate[]",
+        "name": "listCertificates",
+        "type": "tuple[]"
+      },
+      {
+        "internalType": "uint256",
+        "name": "total",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAllCertificates",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "certHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "issuer",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "issuerName",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "student",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "studentName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseType",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseLevel",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "issuedDate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct CertificateRegistry.Certificate[]",
+        "name": "listCertificates",
+        "type": "tuple[]"
+      },
+      {
+        "internalType": "uint256",
+        "name": "total",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "_certHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getCertificateByHash",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "certHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "issuer",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "issuerName",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "student",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "studentName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseType",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseLevel",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "issuedDate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct CertificateRegistry.Certificate",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getRoleAdmin",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_student",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_keyword",
+        "type": "string"
+      }
+    ],
+    "name": "getStudentCertificateByCourseLevel",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "certHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "issuer",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "issuerName",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "student",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "studentName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseType",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseLevel",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "issuedDate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct CertificateRegistry.Certificate[]",
+        "name": "listCertificates",
+        "type": "tuple[]"
+      },
+      {
+        "internalType": "uint256",
+        "name": "total",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_student",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_keyword",
+        "type": "string"
+      }
+    ],
+    "name": "getStudentCertificateByCourseName",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "certHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "issuer",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "issuerName",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "student",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "studentName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseType",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseLevel",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "issuedDate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct CertificateRegistry.Certificate[]",
+        "name": "listCertificates",
+        "type": "tuple[]"
+      },
+      {
+        "internalType": "uint256",
+        "name": "total",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_student",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_keyword",
+        "type": "string"
+      }
+    ],
+    "name": "getStudentCertificateByCourseType",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "certHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "issuer",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "issuerName",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "student",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "studentName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseType",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseLevel",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "issuedDate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct CertificateRegistry.Certificate[]",
+        "name": "listCertificates",
+        "type": "tuple[]"
+      },
+      {
+        "internalType": "uint256",
+        "name": "total",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_student",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_fromDate",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_toDate",
+        "type": "uint256"
+      }
+    ],
+    "name": "getStudentCertificateByDate",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "certHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "issuer",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "issuerName",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "student",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "studentName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseType",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseLevel",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "issuedDate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct CertificateRegistry.Certificate[]",
+        "name": "listCertificates",
+        "type": "tuple[]"
+      },
+      {
+        "internalType": "uint256",
+        "name": "total",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_student",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "_certHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getStudentCertificateByHash",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "certHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "issuer",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "issuerName",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "student",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "studentName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseType",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseLevel",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "issuedDate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct CertificateRegistry.Certificate",
+        "name": "certificate",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_student",
+        "type": "address"
+      }
+    ],
+    "name": "getStudentCertificatesByStudent",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "bytes32",
+            "name": "certHash",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "issuer",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "issuerName",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "student",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "studentName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseType",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "courseLevel",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "issuedDate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct CertificateRegistry.Certificate[]",
+        "name": "listCertificates",
+        "type": "tuple[]"
+      },
+      {
+        "internalType": "uint256",
+        "name": "total",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "grantRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "hasRole",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_student",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_studentName",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "_issuer",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_issuerName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_courseName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_courseType",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_courseLevel",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_metadataURI",
+        "type": "string"
+      }
+    ],
+    "name": "issueCertificate",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "callerConfirmation",
+        "type": "address"
+      }
+    ],
+    "name": "renounceRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "revokeRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes4",
+        "name": "interfaceId",
+        "type": "bytes4"
+      }
+    ],
+    "name": "supportsInterface",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
