@@ -7,7 +7,7 @@ const testPoolModel = require("../models/testPoolModel");
 const testModel = require("../models/testModel");
 
 // const StudyStats = require("../schemas/studyStats");
-const StudyLog = require("../schemas/studyLog");
+const StudyLog = require("../schemas/StudyLog");
 const dayjs = require("dayjs");
 
 const userModel = require("../models/userModel");
